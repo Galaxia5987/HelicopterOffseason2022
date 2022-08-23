@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -44,5 +45,11 @@ public class Helicopter extends SubsystemBase {
         return mainMotor.get();
     }
 
-    
+    public void setVelocity(double Velocity){
+        mainMotor.set(ControlMode.Velocity, unitModel.toTicks100ms(Velocity));
+    }
+
+    public double getVelocity(){
+        return unitModel.toVelocity(mainMotor.getSelectedSensorVelocity());
+    }
 }
