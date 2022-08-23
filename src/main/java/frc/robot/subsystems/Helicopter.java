@@ -9,6 +9,7 @@ import frc.robot.Ports;
 public class Helicopter extends SubsystemBase {
     private final WPI_TalonFX mainMotor = new WPI_TalonFX(Ports.MAIN_MOTOR);
     private final WPI_TalonFX auxMotor=new WPI_TalonFX(Ports.AUX_MOTOR);
+    public static Helicopter INSTANCE=null;
 
     public Helicopter(){
         mainMotor.setInverted(Ports.INVERTED);
@@ -22,7 +23,25 @@ public class Helicopter extends SubsystemBase {
         auxMotor.follow(mainMotor);
         mainMotor.configMotionAcceleration(Constants.MAX_ACCELERATION);
         mainMotor.configMotionCruiseVelocity(Constants.VELOCITY_CRUISE);
+        mainMotor.config_kP(0, Constants.KP, Constants.TALON_TIME_OUT);
+        mainMotor.config_kI(0, Constants.KI, Constants.TALON_TIME_OUT);
+        mainMotor.config_kD(0, Constants.KD, Constants.TALON_TIME_OUT);
     }
 
+    public static Helicopter getInstance(){
+        if (INSTANCE==null){
+            INSTANCE=new Helicopter();
+        }
+        return INSTANCE;
+    }
 
+    public void setPower(double Power){
+        mainMotor.set(Power);
+    }
+
+    public double getPower(){
+        return mainMotor.get();
+    }
+
+    
 }
