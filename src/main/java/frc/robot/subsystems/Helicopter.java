@@ -10,6 +10,7 @@ public class Helicopter extends SubsystemBase {
     private final WPI_TalonFX mainMotor = new WPI_TalonFX(Ports.MAIN_MOTOR);
     private final WPI_TalonFX auxMotor=new WPI_TalonFX(Ports.AUX_MOTOR);
     public static Helicopter INSTANCE=null;
+    public static UnitModel unitModel= new UnitModel(Constants.TICKS_PER_RAD);
 
     public Helicopter(){
         mainMotor.setInverted(Ports.INVERTED);
