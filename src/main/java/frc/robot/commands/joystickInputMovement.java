@@ -19,13 +19,18 @@ public class joystickInputMovement extends CommandBase {
     }
 
 
-
+    /**
+     * set power to power%
+     */
     @Override
     public void execute() {
         double power = util.convertDeadBand(joyStickInput.getAsDouble(), 0.05);
         choppa.setPower(power);
     }
 
+    /**
+     * set power to 0%
+     */
     @Override
     public void end(boolean interrupted) {
         choppa.setPower(0);

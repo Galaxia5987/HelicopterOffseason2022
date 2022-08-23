@@ -22,4 +22,6 @@ public static class Choppa{
     public static double kD = 0;
 }
 public static int TalonTimeout = 10;
+public static double nominalVolt = 10;
+
 }

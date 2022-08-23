@@ -9,9 +9,9 @@ import frc.robot.Constants;
 public class Choppa extends SubsystemBase {
     private final WPI_TalonFX mainMotor = new WPI_TalonFX(0);
     private final WPI_TalonFX auxMotor = new WPI_TalonFX(0);
-    private final Choppa INSTANCE = new Choppa();
+    private Choppa INSTANCE = new Choppa();
     private Choppa(){
-        mainMotor.configVoltageCompSaturation();
+        mainMotor.configVoltageCompSaturation(Constants.nominalVolt);
         mainMotor.enableVoltageCompensation(true);
         mainMotor.setInverted(true);
         auxMotor.follow(mainMotor);
@@ -19,16 +19,30 @@ public class Choppa extends SubsystemBase {
         mainMotor.config_kP(0, Constants.Choppa.kP,Constants.TalonTimeout);
         mainMotor.config_kI(0, Constants.Choppa.kI,Constants.TalonTimeout);
     }
+
+    /**
+     * set power
+     * @param power
+     */
     public void setPower(double power){
         mainMotor.set(power);
     }
+
+    /**
+     * get power
+     * @return mainMonitor.get
+     */
     public double getPower(){
         return mainMotor.get();
     }
 
+    /**
+     * get instance
+     * @return instance
+     */
     public Choppa getINSTANCE() {
         if (INSTANCE == null){
-            return new Choppa();
+            INSTANCE = new Choppa();
         }
         return INSTANCE;
     }
