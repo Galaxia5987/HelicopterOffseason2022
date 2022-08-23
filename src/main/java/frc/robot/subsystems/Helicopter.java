@@ -52,4 +52,17 @@ public class Helicopter extends SubsystemBase {
     public double getVelocity(){
         return unitModel.toVelocity(mainMotor.getSelectedSensorVelocity());
     }
+
+    public void stopMotor(){
+        mainMotor.set(0);
+    }
+
+    public double deadZone(double value){
+        if(value<=-Constants.DEADBEND||value>=Constants.DEADBEND){
+            return 0;
+        }
+        else{
+            return value;
+        }
+    }
 }
