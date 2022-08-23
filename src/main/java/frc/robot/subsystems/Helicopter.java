@@ -30,6 +30,10 @@ public class Helicopter extends SubsystemBase {
         mainMotor.config_kD(0, Constants.KD, Constants.TALON_TIME_OUT);
     }
 
+    /**
+     * creats an instance
+     * @return
+     */
     public static Helicopter getInstance(){
         if (INSTANCE==null){
             INSTANCE=new Helicopter();
@@ -37,26 +41,50 @@ public class Helicopter extends SubsystemBase {
         return INSTANCE;
     }
 
+    /**
+     * sets the power fot the motors
+     * @param Power
+     */
     public void setPower(double Power){
         mainMotor.set(Power);
     }
 
+    /**
+     * gets the power of the motors
+     * @return
+     */
     public double getPower(){
         return mainMotor.get();
     }
 
+    /**
+     * sets the velocity of the motors
+     * @param Velocity
+     */
     public void setVelocity(double Velocity){
         mainMotor.set(ControlMode.Velocity, unitModel.toTicks100ms(Velocity));
     }
 
+    /**
+     * gets the velocity of the motors
+     * @return
+     */
     public double getVelocity(){
         return unitModel.toVelocity(mainMotor.getSelectedSensorVelocity());
     }
 
+    /**
+     * stops the motors
+     */
     public void stopMotor(){
         mainMotor.set(0);
     }
 
+    /**
+     * checks if the motors are in the dead zone
+     * @param value
+     * @return
+     */
     public double deadZone(double value){
         if(value<=-Constants.DEADBEND||value>=Constants.DEADBEND){
             return 0;

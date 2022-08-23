@@ -15,6 +15,9 @@ public class HelicopterSpin extends CommandBase {
         addRequirements(helicopter);
     }
 
+    /**
+     * spins the helicopter and stops it with the velocity we choose
+     */
     @Override
     public void execute() {
         helicopter.setVelocity(helicopter.deadZone(value.getAsDouble()));
