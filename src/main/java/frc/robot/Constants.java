@@ -13,4 +13,15 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {}
+public final class Constants {
+    public static final boolean ENABLE_VOLT_COMP= true;
+    public static final int CONFIG_VOLTAGE_COMP= 12;
+    public static final int MAX_ACCELERATION=0;
+    public static final int VELOCITY_CRUISE=0;
+    public static final double KP =0;
+    public static final double KI =0;
+    public static final double KD =0;
+    public static final int TALON_TIME_OUT =10;
+    public static final double TICKS_PER_RAD=(2048*292.1)/(Math.PI*2);
+    public static final double DEADBEND=0.05;//[%]
+}
