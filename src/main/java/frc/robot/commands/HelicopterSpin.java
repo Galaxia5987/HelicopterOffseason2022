@@ -20,11 +20,11 @@ public class HelicopterSpin extends CommandBase {
      */
     @Override
     public void execute() {
-        helicopter.setVelocity(helicopter.deadZone(value.getAsDouble()));
+        helicopter.setVelocity(helicopter.deadBend(value.getAsDouble()));
     }
 
     @Override
     public void end(boolean interrupted) {
-        helicopter.setVelocity(0);
+        helicopter.stopMotor();
     }
 }

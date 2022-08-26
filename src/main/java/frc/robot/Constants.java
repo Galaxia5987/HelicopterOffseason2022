@@ -23,5 +23,5 @@ public final class Constants {
     public static final double KD =0;
     public static final int TALON_TIME_OUT =10;
     public static final double TICKS_PER_RAD=(2048*292.1)/(Math.PI*2);
-    public static final double DEADBEND=0.05;
+    public static final double DEADBEND=0.05;//[%]
 }

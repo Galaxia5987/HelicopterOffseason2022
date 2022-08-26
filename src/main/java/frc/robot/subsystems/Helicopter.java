@@ -85,7 +85,7 @@ public class Helicopter extends SubsystemBase {
      * @param value
      * @return
      */
-    public double deadZone(double value){
+    public double deadBend(double value){
         if(value<=-Constants.DEADBEND||value>=Constants.DEADBEND){
             return 0;
         }
