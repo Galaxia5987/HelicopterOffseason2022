@@ -6,6 +6,9 @@ import frc.robot.Ports;
 
 public class Helicopter extends SubsystemBase {
     private final WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
+
+    private static Helicopter INSTANCE = null;
+
     public Helicopter(){
         motor.setInverted(Ports.INVERT);
         motor.enableVoltageCompensation(Ports.ENABLE_VOLTAGE_COMPENSATION);
@@ -22,5 +25,11 @@ public class Helicopter extends SubsystemBase {
 
     public double getPower(){
         return motor.get();
+    }
+
+    public static Helicopter getINSTANCE(){
+        if(INSTANCE == null)
+            INSTANCE = new Helicopter();
+        return INSTANCE;
     }
 }
